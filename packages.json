@@ -4,15 +4,21 @@
     "description": "My portfolio website in full stack version",
     "main": "index.js",
     "scripts": {
-        "start": "node api/submit.js"
+      "dev": "next dev",   
+      "build": "next build", 
+      "start": "next start" 
     },
     "dependencies": {
-        "pg": "^8.7.1"
+      "next": "^12.0.0",    
+      "react": "^17.0.0",   
+      "react-dom": "^17.0.0", 
+      "pg": "^8.7.1"        
     },
     "engines": {
-        "node": "18.x"
+      "node": "18.x"
     },
     "devDependencies": {},
     "author": "Mariano, Wesley, R.",
     "license": "MIT"
-}
+  }
+  
