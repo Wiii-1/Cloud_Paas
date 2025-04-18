@@ -22,6 +22,7 @@ Database:           PostgreSQL via Neon.tech
 ## File Structure
 .
 ├── api/
+|   |
 │   └── submit.js              # Serverless function for suggestions
 ├── public/
 │   ├── index.html             # Main page

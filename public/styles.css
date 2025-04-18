@@ -1,0 +1,193 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0e2342;
+    color: #c9d1d9;
+    line-height: 1.6;
+}
+
+/* Header and Navigation */
+header {
+    padding: 3rem 6rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mi_logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #58a6ff;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #c9d1d9;
+    transition: color 0.3s ease;
+    font-size: 25px;
+}
+
+nav ul li a:hover {
+    color: #58a6ff;
+}
+
+/* Home Page */
+
+
+.Home_Page .content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    gap: 3rem;
+    padding: 3rem 2rem;
+    text-align: justify;
+}
+
+.Home_Page .image img {
+    width: 350px;
+    height: auto;
+    border-radius: 1rem;
+    border: 2px solid #30363d;
+}
+
+.Home_Page .hero {
+    max-width: 700px;
+}
+
+.Home_Page .intro {
+    color: #58a6ff;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 0.5rem;
+}
+
+.Home_Page h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.Home_Page .desciption {
+    font-size: 20px;
+    color: #adbac7;
+}
+
+
+
+/* About Page */
+.about_page .about_content {
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
+}
+
+.about_page .image img {
+    width: 320px;
+    border-radius: 1rem;
+    border: 2px solid #30363d;
+    margin-bottom: 2rem;
+}
+
+.about_page .about-section {
+    max-width: 800px;
+}
+
+.about_page .about-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #58a6ff;
+}
+
+.about_page .about-section p {
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+
+/* Project Page */
+.project_page #Projects {
+    padding: 3rem 2rem;
+    max-width: 1000px;
+    margin: auto;
+    text-align: justify;
+    font-size: 20px;
+}
+
+.project_page .project {
+    margin-bottom: 2rem;
+}
+
+.project_page .project h3 {
+    font-size: 30px;
+    text-align: center;
+    color: #58a6ff;
+    margin-bottom: 1rem;
+}
+
+.project_page .project p {
+    margin-bottom: 1rem;
+}
+
+.project_page .project a {
+    color: #8b949e;
+    text-decoration: underline;
+}
+
+.project-section h2 {
+    color: #58a6ff;
+    margin-bottom: 1rem;
+}
+
+#suggestion-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+#suggestion-form textarea {
+    padding: 1rem;
+    background-color: #161b22;
+    color: #c9d1d9;
+    border: 1px solid #30363d;
+    resize: vertical;
+    border-radius: 0.5rem;
+}
+
+#suggestion-form button {
+    background-color: #238636;
+    color: #fff;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#suggestion-form button:hover {
+    background-color: #2ea043;
+}
+
+#response-message {
+    color: #8b949e;
+    font-style: italic;
+}
+
+
