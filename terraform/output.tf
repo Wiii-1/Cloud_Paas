@@ -1,4 +1,3 @@
 output "Portfolio" {
-    value = vercel_project.Portfolio
+  value = vercel_project.Portfolio
 }
-
