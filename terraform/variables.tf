@@ -4,11 +4,6 @@ variable "vercel_token" {
     sensitive = true
 }
 
-variable "railway_token" {
-  description = "3099c1d9-48cd-43da-a792-fc144c3433c4"
-  type        = string
-  sensitive   = true
-}
 
 variable "DATABASE_URL" {
   type        = string
