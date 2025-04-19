@@ -1,33 +1,23 @@
 # Portfolio Website - Cloud Paas Architecture
 
-A personal website deployed using vercel with terraform for infrastructure as Code (IaC).
-It includes a static frontend(HTML, CSS, JS), a serverless function to submit suggestions for website improvement,
-and a connected PostgreSQL database hosted on Neon.tech for the suggestion querries.
+A personal website deployed using Vercel with Terraform for Infrastructure as Code (IaC).
+It includes a static frontend (HTML, CSS, JS).
 
 ## Key Concepts Applied
-- Platform as a Service (Paas)
+- Platform as a Service (PaaS)
 - Infrastructure as Code (IaC)
-- Serverless Function with vercel
-- PostgreSQL Database (Neon.tech)
 - Static Web Hosting
 
-
 ## Architecture Overview
-Frontend:           HTML,CSS,JS(Static files)
-Backend:            Serverless API function ('submit.js')
-infra Provisioning: Terraform (Vercel Provider)
-Database:           PostgreSQL via Neon.tech
-
+Frontend:           HTML, CSS, JS (Static files)
+Infra Provisioning: Terraform (Vercel Provider)
 
 ## File Structure
 .
-├── api/
-|   |
-│   └── submit.js              # Serverless function for suggestions
 ├── public/
 │   ├── index.html             # Main page
 │   ├── about.html             # About section
-|   ├── project.html           # the projects I made
+│   ├── project.html           # The projects I made
 │   └── css/                   # Styles
 ├── terraform/
 │   ├── main.tf                # Terraform config
@@ -35,7 +25,6 @@ Database:           PostgreSQL via Neon.tech
 │   └── outputs.tf             # (Optional)
 ├── vercel.json                # Routing & build configuration
 └── README.md                  # You're reading it!
-
 
 ## Deployment
 
@@ -45,10 +34,6 @@ Database:           PostgreSQL via Neon.tech
         terraform plan
 3. Deploy Infrastructure
         terraform apply
-
-## Enviroment Variables
-- DATABASE_URL: My PostgreSQL connection
-- VERCEL_TOKEN
 
 Mariano, Wesley, R.
 Bachelor of Sciences in Computer Science at Sti College Pasay Edsa
