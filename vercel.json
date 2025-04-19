@@ -23,6 +23,15 @@
         "src": "/(.*)",
         "dest": "/public/$1"
       }
-    ]
+    ],
+    "build":{
+        "env":{
+            "PYTHON_VERSION": "3.9"
+          },
+          "commands": [
+            "pip install --upgrade pip",
+            "pip install -r requirements.txt"
+        ]
+    }
   }
   

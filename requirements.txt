@@ -1,5 +1,5 @@
 # Web framework (choose one)
-flask==2.1.1
+flask==2.0.1
 # OR
 # fastapi==0.68.0
 # uvicorn==0.15.0
