@@ -4,37 +4,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (form) {
     form.addEventListener('submit', async (e) => {
-      e.preventDefault();  
+      e.preventDefault(); 
 
-      const suggestion = form.suggestion.value;  
+      const suggestion = form.suggestion.value; 
 
       try {
        
         const response = await fetch('/api/submit', {
-          method: 'POST',  
+          method: 'POST',
           headers: {
-            'Content-Type': 'application/json',  
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ suggestion })  
+          body: JSON.stringify({ suggestion }),  
         });
 
-        
-        const result = await response.json();
+        const result = await response.json();  
 
         if (result.success) {
-         
+          
           responseMsg.textContent = '✅ Thanks for your suggestion!';
           responseMsg.style.color = 'green';
-          form.reset(); 
+          form.reset();  
         } else {
           
           responseMsg.textContent = '❌ ' + result.message;
           responseMsg.style.color = 'red';
         }
       } catch (err) {
-        
+        // Handle errors (e.g., no internet, server errors)
         console.error(err);
-        responseMsg.textContent = '❌ Something went wrong. Try again later.';
+        responseMsg.textContent = 
         responseMsg.style.color = 'red';
       }
     });

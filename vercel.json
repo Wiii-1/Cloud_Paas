@@ -2,11 +2,8 @@
     "version": 2,
     "builds": [
       {
-        "src": "api/submit.py",
-        "use": "@vercel/python",
-        "config": {
-          "runtime": "python3.9"
-        }
+        "src": "api/submit.js",
+        "use": "@vercel/node"
       },
       {
         "src": "public/**/*",
@@ -16,7 +13,7 @@
     "routes": [
       {
         "src": "/api/(.*)",
-        "dest": "api/submit.py"
+        "dest": "api/submit.js"
       },
       {
         "src": "/(.*)",
