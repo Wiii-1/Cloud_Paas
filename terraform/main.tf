@@ -13,7 +13,6 @@ provider "vercel" {
 
 resource "vercel_project" "Portfolio" { 
   name = "portfolio-terraform"  
-  framework = "node"
   git_repository = {
     type = "github"
     repo = "Wiii-1/Cloud_Paas"

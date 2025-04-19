@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
           responseMsg.style.color = 'red';
         }
       } catch (err) {
-        // Handle errors (e.g., no internet, server errors)
+        
         console.error(err);
-        responseMsg.textContent = 
+        responseMsg.textContent = '❌ Something went wrong. Try again later.';
         responseMsg.style.color = 'red';
       }
     });
