@@ -1,62 +1,37 @@
-const express = require('express');
-const cors = require('cors');
-const { Client } = require('pg'); 
+// api/submit.js
 
-const app = express();
+import { Pool } from 'pg';
 
 
-app.use(cors({
-  origin: 'http://portfolio-terraform-omega.vercel.app/',  
-  methods: ['GET', 'POST'],
-  credentials: true
-}));
-
-app.use(express.json());
-
-
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,  
+  ssl: { rejectUnauthorized: false },  
 });
 
+export default async function handler(req, res) {
+  if (req.method === 'POST') {
+    const { suggestion } = req.body; 
 
-client.connect().catch(err => console.error('Database connection error', err.stack));
+    try {
+      
+      const result = await pool.query(
+        'INSERT INTO suggestions (suggestion) VALUES ($1) RETURNING id',
+        [suggestion]
+      );
 
+      
+      res.status(200).json({
+        success: true,
+        message: 'Suggestion submitted successfully!',
+        data: result.rows[0],  
+      });
+    } catch (error) {
+      console.error('Error inserting suggestion:', error);
 
-app.post('/api/submit', async (req, res) => {
-  const { suggestion } = req.body;
-
-  if (!suggestion || suggestion.trim() === '') {
-    return res.status(400).json({
-      success: false,
-      message: 'Suggestion is required',
-    });
+      res.status(500).json({ success: false, message: 'Error submitting suggestion.' });
+    }
+  } else {
+   
+    res.status(405).json({ success: false, message: 'Method not allowed' });
   }
-
-  try {
-    const result = await client.query(
-      'INSERT INTO suggestions(suggestion) VALUES($1) RETURNING *',
-      [suggestion]
-    );
-
-    res.status(200).json({
-      success: true,
-      message: 'Suggestion received!',
-      data: result.rows[0], 
-    });
-  } catch (error) {
-    console.error('Error inserting suggestion:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Internal Server Error',
-    });
-  }
-});
-
-// Listen on the correct port (from environment variable or fallback to 3000 for local)
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Backend is running on port ${port}`);
-});
+}
