@@ -8,11 +8,19 @@
       {
         "src": "public/**/*",
         "use": "@vercel/static"
+      },
+      {
+        "src": "api/main.py",
+        "use": "@vercel/python",
+        "config": {
+          "maxDuration": 30,
+          "runtime": "python3.9"
+        }
       }
     ],
     "routes": [
       {
-        "src": "/api/submit",
+        "src": "/api/(.*)",
         "dest": "api/submit.py"
       },
       {
@@ -21,4 +29,3 @@
       }
     ]
   }
-  
