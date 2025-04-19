@@ -1,15 +1,15 @@
 import json
-import psycopg2
+import asyncpg
 import os
+import asyncio
 
-def handler(req, res):
+async def handler(req, res):
     if req['method'] == 'POST':
-        # Establish the connection to the PostgreSQL database
-        conn = psycopg2.connect(os.environ['DATABASE_URL'])
-        cursor = conn.cursor()
-
+       
+        conn = await asyncpg.connect(os.environ['DATABASE_URL'])
+        
         try:
-            # Parse the incoming JSON body
+           
             body = json.loads(req['body'])
             suggestion = body.get('suggestion', '').strip()
 
@@ -22,14 +22,11 @@ def handler(req, res):
                     }
                 )
 
-            # Insert suggestion into the database
-            cursor.execute(
-                'INSERT INTO suggestions(suggestion) VALUES (%s) RETURNING *',
-                (suggestion,)
+           
+            result = await conn.fetch(
+                'INSERT INTO suggestions(suggestion) VALUES ($1) RETURNING *',
+                suggestion
             )
-
-            # Fetch the inserted row
-            result = cursor.fetchone()
 
             return res(
                 status=200,
@@ -50,9 +47,8 @@ def handler(req, res):
                 }
             )
         finally:
-            # Close database connection
-            cursor.close()
-            conn.close()
+            
+            await conn.close()
 
     else:
         return res(
@@ -62,3 +58,5 @@ def handler(req, res):
                 'message': 'Method Not Allowed'
             }
         )
+
+
