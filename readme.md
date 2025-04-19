@@ -12,6 +12,9 @@ It includes a static frontend (HTML, CSS, JS).
 Frontend:           HTML, CSS, JS (Static files)
 Infra Provisioning: Terraform (Vercel Provider)
 
+## Live demo
+- http://portfolio-terraform-omega.vercel.app/
+
 ## File Structure
 .
 ├── public/
