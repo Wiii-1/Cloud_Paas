@@ -1,11 +1,11 @@
 # Web framework (choose one)
-flask==2.0.1
+flask==2.1.1
 # OR
 # fastapi==0.68.0
 # uvicorn==0.15.0
 
 # PostgreSQL connector (equivalent to pg)
-psycopg2-binary==2.9.1
+psycopg2-binary==2.9.3
 
 # Additional useful packages
 python-dotenv==0.19.0
