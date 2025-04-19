@@ -11,22 +11,25 @@ provider "vercel" {
     api_token = var.vercel_token
 }
 
-resource "vercel_project" "Portfolio" { 
+resource "vercel_project" "portfolio" { 
   name = "portfolio-terraform"  
-  framework = "nextjs"
   git_repository = {
-    type = "github"
+    type = "github" 
     repo = "Wiii-1/Cloud_Paas"
   }
-  
 }
 
-resource "vercel_project_environment_variable" "db_url" {
-  project_id = vercel_project.Portfolio.id
+resource "vercel_project_environment_variable" "database_url" {
+  project_id = vercel_project.portfolio.id  
   key        = "DATABASE_URL"
   value      = var.DATABASE_URL
-  target     = ["production"]
+  target     = ["production", "preview"]
 }
 
 
-
+resource "vercel_project_environment_variable" "python_version" {
+  project_id = vercel_project.portfolio.id
+  key        = "PYTHON_VERSION"
+  value      = "3.9" 
+  target     = ["production", "preview"]
+}

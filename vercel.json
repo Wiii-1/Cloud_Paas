@@ -1,24 +1,23 @@
 {
     "version": 2,
-    "builds":[
-        {
-            "src": "public/**/*",
-            "use": "@vercel/static"
-        },
-        {
-            "src": "api/submit.js",
-            "use": "@vercel/node"
-        }
+    "builds": [
+      {
+        "src": "api/submit.py",
+        "use": "@vercel/python"
+      },
+      {
+        "src": "public/**/*",
+        "use": "@vercel/static"
+      }
     ],
     "routes": [
-        {
-            "src": "api/submit",
-            "methods": ["POST"],
-            "dest": "api/submit.js"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/public/$1"
-        }
+      {
+        "src": "/api/(.*)",
+        "dest": "api/submit.py"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/public/$1"
+      }
     ]
-}
+  }
