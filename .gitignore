@@ -1,15 +1,18 @@
-# Node.js dependencies
+
 node_modules/
 
-# dotenv environment variable files
+
 .env
 
-# Logs
+
 *.log
 
-# OS-specific files
+
 .DS_Store
 Thumbs.db
 
-# IDE settings (example for VSCode)
+
 .vscode/
+
+
+terraform/terraform.tfvars

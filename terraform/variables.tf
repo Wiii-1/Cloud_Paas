@@ -4,3 +4,8 @@ variable "vercel_token" {
   sensitive   = true
 }
 
+variable "render_api_key" {
+  description = "Render Api key"
+  type        = string
+  sensitive   = true
+}
