@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
   
   const { suggestion } = req.body;
 
-  // Validate the input
+  
   if (!suggestion) {
     console.log('Suggestion is missing');
     return res.status(400).send('Suggestion is required');
@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
   console.log('Suggestion received:', suggestion);
 
   try {
-    // Insert the suggestion into the database
+    
     await db.query('INSERT INTO suggestions (content) VALUES ($1)', [suggestion]);
     console.log('Suggestion inserted successfully');
     res.status(200).send('Thank you for your suggestion!');
