@@ -13,7 +13,9 @@ console.log(`Database URL: ${process.env.DATABASE_URL}`);
 app.use(express.json());
 
 app.use(cors({
-  origin: 'https://portfolio-terraform-omega.vercel.app' 
+  origin: 'https://portfolio-terraform-omega.vercel.app',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));

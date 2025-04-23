@@ -3,14 +3,14 @@ const db = require('../utils/db');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-  console.log('Request received:', req.body);
-
   const { suggestion } = req.body;
 
   if (!suggestion) {
     console.log('Suggestion is missing');
     return res.status(400).send('Suggestion is required');
   }
+
+  console.log('Suggestion:', suggestion);
 
   try {
     const result = await db.query('SELECT NOW()');
