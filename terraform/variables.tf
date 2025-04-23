@@ -16,7 +16,7 @@ variable "railway_token" {
   sensitive   = true
 }
 
-#variable "environment_id" {
-#  description = "The ID of the Railway environment"
-#  type        = string
-#}
+variable "environment_id" {
+  description = "The ID of the Railway environment"
+  type        = string
+}

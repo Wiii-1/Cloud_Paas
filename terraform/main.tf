@@ -40,19 +40,18 @@ resource "railway_service" "backend_service" {
   name       = "backend-api"
 }
 
-# Comment out railway_variable and railway_deployment_trigger
-# resource "railway_variable" "database_url" {
-#   service_id     = railway_service.backend_service.id
-#   environment_id = var.environment_id
-#   name           = "DATABASE_URL"
-#   value          = var.database_url
-# }
+resource "railway_variable" "database_url" {
+  service_id     = railway_service.backend_service.id
+  environment_id = var.environment_id
+  name           = "DATABASE_URL"
+  value          = var.database_url
+}
 
-# resource "railway_deployment_trigger" "github_trigger" {
-#   service_id     = railway_service.backend_service.id
-#   environment_id = var.environment_id
-#   repository     = "Wiii-1/Cloud_Paas"
-#   branch         = "main"
-# }
+resource "railway_deployment_trigger" "github_trigger" {
+  service_id     = railway_service.backend_service.id
+  environment_id = var.environment_id
+  repository     = "Wiii-1/Cloud_Paas"
+  branch         = "main"
+}
 
 
