@@ -3,6 +3,8 @@ const db = require('../utils/db');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
+  console.log('Request received at /api/submit');
+  
   const { suggestion } = req.body;
 
   // Validate the input
