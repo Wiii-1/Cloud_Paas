@@ -8,6 +8,7 @@ const submitRoute = require('./routes/submit');
 const app = express();
 
 console.log('Starting server...');
+console.log(`Database URL: ${process.env.DATABASE_URL}`);
 
 app.use(express.json());
 
