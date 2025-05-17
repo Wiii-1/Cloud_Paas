@@ -1,25 +1,20 @@
-const backendUrl = 'https://f012-2404-3c00-4e2f-b710-dc48-e99e-3530-1910.ngrok-free.app';
+const backendUrl = 'https://<your-ngrok-url>'; // <- Replace this with your actual Ngrok URL (no trailing slash)
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('suggestion-form');
-  const responseMessage = document.getElementById('response-message');
-
-  if (!form || !responseMessage) {
-    console.error('Form or response message element not found.');
-    return;
-  }
+  const responseBox = document.getElementById('response-message');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const suggestion = form.suggestion.value.trim();
+    const suggestion = form.elements['suggestion'].value.trim();
 
     if (!suggestion) {
-      responseMessage.textContent = 'Please enter a suggestion.';
+      responseBox.textContent = 'Suggestion cannot be empty.';
       return;
     }
 
     try {
-      const response = await fetch(`${backendUrl}/api/submit`, {
+      const res = await fetch(`${backendUrl}/api/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -27,12 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify({ suggestion })
       });
 
-      const data = await response.text();
-      responseMessage.textContent = data;
-      form.reset();
+      const text = await res.text();
+      responseBox.textContent = res.ok ? text : `Error: ${text}`;
+      if (res.ok) form.reset();
     } catch (err) {
-      console.error('Fetch error:', err);
-      responseMessage.textContent = 'Failed to submit suggestion. Please try again later.';
+      console.error('Request failed:', err);
+      responseBox.textContent = 'Failed to send suggestion. Try again later.';
     }
   });
 });

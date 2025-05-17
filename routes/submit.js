@@ -1,28 +1,19 @@
 const express = require('express');
-const db = require('../utils/db'); 
 const router = express.Router();
 
-router.post('/', async (req, res) => {
-  console.log('Request received at /api/submit');
-  
+router.post('/submit', async (req, res) => {
   const { suggestion } = req.body;
 
-  
-  if (!suggestion) {
-    console.log('Suggestion is missing');
-    return res.status(400).send('Suggestion is required');
+  if (!suggestion || typeof suggestion !== 'string' || suggestion.trim() === '') {
+    return res.status(400).send('Invalid suggestion.');
   }
 
-  console.log('Suggestion received:', suggestion);
-
   try {
-    
-    await db.query('INSERT INTO suggestions (content) VALUES ($1)', [suggestion]);
-    console.log('Suggestion inserted successfully');
-    res.status(200).send('Thank you for your suggestion!');
-  } catch (error) {
-    console.error('Error inserting suggestion:', error);
-    res.status(500).send('Internal Server Error');
+    console.log('Received suggestion:', suggestion);
+    res.status(200).send('Suggestion submitted successfully.');
+  } catch (err) {
+    console.error('Error processing suggestion:', err);
+    res.status(500).send('Internal Server Error.');
   }
 });
 

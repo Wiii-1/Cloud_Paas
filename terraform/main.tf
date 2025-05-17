@@ -1,19 +1,25 @@
 terraform {
   required_providers {
     vercel = {
-      source  = "vercel/vercel"
-      version = "2.15.1"
+      source = "vercel/vercel"
+      version = "3.2.1"
+    }
+    railway = {
+      source = "terraform-community-providers/railway"
+      version = "0.5.1"
     }
   }
 }
 
-# Vercel Provider
+# --- Providers ---
 provider "vercel" {
   api_token = var.vercel_token
 }
 
+provider "railway" {
+  token = var.railway_token
+}
 
-# Vercel Project
 resource "vercel_project" "Portfolio" {
   name = "portfolio-terraform"
   git_repository = {
@@ -21,11 +27,6 @@ resource "vercel_project" "Portfolio" {
     repo = "Wiii-1/Cloud_Paas"
   }
 }
-
-
-
-
-
 
 
 
