@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const submitRoute = require('./routes/submit'); 
+const submitRoute = require('./api/submit'); 
 
 const app = express();
 
@@ -12,6 +12,8 @@ app.use(cors({
 app.use(express.json()); 
 
 app.use('/api/submit', submitRoute);
+
+const backendUrl = 'backend-api-production-34bc.up.railway.app';
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
