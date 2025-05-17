@@ -29,4 +29,11 @@ resource "vercel_project" "Portfolio" {
 }
 
 
+resource "railway_project" "backend_project" {
+  name = "backend"
+}
 
+resource "railway_service" "backend_service" {
+  project_id = railway_project.backend_project.id
+  name       = "backend-api"
+}
