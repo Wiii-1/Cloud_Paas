@@ -1,4 +1,4 @@
-const backendUrl = 'backend-api-production-34bc.up.railway.app';
+const backendUrl = 'https://backend-api-production-34bc.up.railway.app';
 
 document.getElementById('suggestion-form').addEventListener('submit', async (e) => {
     e.preventDefault();
