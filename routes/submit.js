@@ -1,28 +1,26 @@
 const express = require('express');
-const db = require('../utils/db'); 
+const db = require('../utils/db');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
   console.log('Request received at /api/submit');
-  
+
   const { suggestion } = req.body;
 
-  
   if (!suggestion) {
     console.log('Suggestion is missing');
-    return res.status(400).send('Suggestion is required');
+    return res.status(400).json({ error: 'Suggestion is required' });
   }
 
   console.log('Suggestion received:', suggestion);
 
   try {
-    
     await db.query('INSERT INTO suggestions (content) VALUES ($1)', [suggestion]);
     console.log('Suggestion inserted successfully');
-    res.status(200).send('Thank you for your suggestion!');
+    res.status(200).json({ message: 'Thank you for your suggestion!' });
   } catch (error) {
     console.error('Error inserting suggestion:', error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
