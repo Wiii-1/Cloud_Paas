@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const submitRoute = require('./submit');
+const submitRoute = require('./routes/submit'); // <-- FIXED
 
 const app = express();
 
@@ -10,7 +10,7 @@ app.use(cors({
 
 app.use(express.json()); 
 
-app.use('/api', submitRoute);
+app.use('/api/sumbit', submitRoute);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
