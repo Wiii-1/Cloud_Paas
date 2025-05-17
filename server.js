@@ -1,17 +1,27 @@
+require('dotenv').config();
+
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
-const bodyParser = require('body-parser');
-const submitRoute = require('./submit');
+const submitRoute = require('./routes/submit');
 
 const app = express();
 
+console.log('Starting server...');
+console.log(`Database URL: ${process.env.DATABASE_URL}`);
+
+app.use(express.json()); 
+
 app.use(cors({
-  origin: 'https://portfolio-terraform-virid.vercel.app' // change if needed
+  origin: 'https://portfolio-terraform-lake.vercel.app', 
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
 }));
-app.use(bodyParser.json());
-app.use('/api', submitRoute);
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/api/submit', submitRoute);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
