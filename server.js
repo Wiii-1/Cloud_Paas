@@ -13,7 +13,7 @@ console.log(`Database URL: ${process.env.DATABASE_URL}`);
 app.use(express.json()); 
 
 app.use(cors({
-  origin: 'https://portfolio-terraform-virid.vercel.app/', 
+  origin: 'http://portfolio-terraform-virid.vercel.app', 
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
 }));
