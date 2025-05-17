@@ -1,4 +1,4 @@
-const backendUrl = 'https://backend-api-production-68d6.up.railway.app';
+const backendUrl = 'https://ed56-2404-3c00-4e2f-b710-dc48-e99e-3530-1910.ngrok-free.app/';
 
 document.getElementById('suggestion-form').addEventListener('submit', async (e) => {
     e.preventDefault();
