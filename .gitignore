@@ -16,3 +16,6 @@ build/
 coverage/
 tmp/
 temp/
+terraform/terraform.tfstate
+terraform/terraform.tfvars
+terraform/.terraform/
